@@ -1,0 +1,14 @@
+{
+    "EMAIL" : null,
+    "OWNER" : "239224506382680064",
+    "PASSWORD" : null,
+    "PREFIXES" : [
+        ";"
+    ],
+    "TOKEN" : "NDExOTkzODYzMjI2NjU0NzIx.DWDyug.7vtnNUv7EPS0JOZW8UW_NacJj1Q",
+    "default" : {
+        "ADMIN_ROLE" : "Bot Commander",
+        "MOD_ROLE" : "Mods",
+        "PREFIXES" : []
+    }
+}
