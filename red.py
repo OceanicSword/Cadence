@@ -14,8 +14,7 @@ try:
 except ImportError:
     print("Discord.py is not installed.\n"
           "Consult the guide for your operating system "
-          "and do ALL the steps in order.\n"
-          "https://twentysix26.github.io/Red-Docs/\n")
+          "and do ALL the steps in order.\n")
     sys.exit(1)
 
 from cogs.utils.settings import Settings
@@ -25,16 +24,9 @@ from collections import Counter
 from io import TextIOWrapper
 
 #
-# Red, a Discord bot by Twentysix, based on discord.py and its command
-#                             extension.
+# Cadence, a Discord music bot by Clout.                             
 #
-#                   https://github.com/Twentysix26/
-#
-#
-# red.py and cogs/utils/checks.py both contain some modified functions
-#                     originally made by Rapptz.
-#
-#                 https://github.com/Rapptz/RoboDanny/
+#    https://github.com/OceanicSword
 #
 
 description = "Cadence - A Club Penguin Music Bot!"
@@ -92,10 +84,10 @@ class Bot(commands.Bot):
         return await super().send_message(*args, **kwargs)
 
     async def shutdown(self, *, restart=False):
-        """Gracefully quits Red with exit code 0
+        """Gracefully quits Cadence with exit code 0
 
         If restart is True, the exit code will be 26 instead
-        The launcher automatically restarts Red when that happens"""
+        The launcher automatically restarts Cadence when that happens"""
         self._shutdown_mode = not restart
         await self.logout()
 
@@ -302,7 +294,7 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
         owner = await set_bot_owner()
 
         print("-----------------")
-        print("Red - Discord Bot")
+        print("Cadence - Discord Bot")
         print("-----------------")
         print(str(bot.user))
         print("\nConnected to:")
@@ -324,7 +316,7 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
             bot.oauth_url = url
             print(url)
 
-        print("\nOfficial server: https://discord.gg/red")
+        print("speedrunning discord: https://discord.gg/a2HUvve")
 
         print("Make sure to keep your bot updated. Select the 'Update' "
               "option from the launcher.")
@@ -394,7 +386,7 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
 
 
 def check_folders():
-    folders = ("data", "data/red", "cogs", "cogs/utils")
+    folders = ("data", "data/cadence", "cogs", "cogs/utils")
     for folder in folders:
         if not os.path.exists(folder):
             print("Creating " + folder + " folder...")
@@ -405,10 +397,8 @@ def interactive_setup(settings):
     first_run = settings.bot_settings == settings.default_settings
 
     if first_run:
-        print("Red - First run configuration\n")
-        print("If you haven't already, create a new account:\n"
-              "https://twentysix26.github.io/Red-Docs/red_guide_bot_accounts/"
-              "#creating-a-new-bot-account")
+        print("Cadence")
+        print("Create Bot Account")
         print("and obtain your bot's token like described.")
 
     if not settings.login_credentials:
@@ -457,12 +447,7 @@ def interactive_setup(settings):
             settings.default_mod = "Process"
         settings.save_settings()
 
-        print("\nThe configuration is done. Leave this window always open to"
-              " keep Red online.\nAll commands will have to be issued through"
-              " Discord's chat, *this window will now be read only*.\n"
-              "Please read this guide for a good overview on how Red works:\n"
-              "https://twentysix26.github.io/Red-Docs/red_getting_started/\n"
-              "Press enter to continue")
+        print("Press enter to continue")
         input("\n")
 
 
@@ -485,7 +470,7 @@ def set_logger(bot):
         logger.setLevel(logging.INFO)
 
     fhandler = logging.handlers.RotatingFileHandler(
-        filename='data/red/red.log', encoding='utf-8', mode='a',
+        filename='data/cadence/cadence.log', encoding='utf-8', mode='a',
         maxBytes=10**7, backupCount=5)
     fhandler.setFormatter(red_format)
 
@@ -498,7 +483,7 @@ def set_logger(bot):
     else:
         dpy_logger.setLevel(logging.WARNING)
     handler = logging.FileHandler(
-        filename='data/red/discord.log', encoding='utf-8', mode='a')
+        filename='data/cadence/discord.log', encoding='utf-8', mode='a')
     handler.setFormatter(logging.Formatter(
         '%(asctime)s %(levelname)s %(module)s %(funcName)s %(lineno)d: '
         '%(message)s',
@@ -527,9 +512,9 @@ def get_answer():
 
 
 def set_cog(cog, value):  # TODO: move this out of red.py
-    data = dataIO.load_json("data/red/cogs.json")
+    data = dataIO.load_json("data/cadence/cogs.json")
     data[cog] = value
-    dataIO.save_json("data/red/cogs.json", data)
+    dataIO.save_json("data/cadence/cogs.json", data)
 
 
 def load_cogs(bot):
@@ -537,7 +522,7 @@ def load_cogs(bot):
                 "general", "image", "mod", "streams", "trivia")
 
     try:
-        registry = dataIO.load_json("data/red/cogs.json")
+        registry = dataIO.load_json("data/cadence/cogs.json")
     except:
         registry = {}
 
@@ -545,13 +530,13 @@ def load_cogs(bot):
     owner_cog = bot.get_cog('Owner')
     if owner_cog is None:
         print("The owner cog is missing. It contains core functions without "
-              "which Red cannot function. Reinstall.")
+              "which Cadence cannot function. Reinstall.")
         exit(1)
 
     if bot.settings._no_cogs:
         bot.logger.debug("Skipping initial cogs loading (--no-cogs)")
-        if not os.path.isfile("data/red/cogs.json"):
-            dataIO.save_json("data/red/cogs.json", {})
+        if not os.path.isfile("data/cadence/cogs.json"):
+            dataIO.save_json("data/cadence/cogs.json", {})
         return
 
     failed = []
@@ -574,7 +559,7 @@ def load_cogs(bot):
                 failed.append(extension)
                 registry[extension] = False
 
-    dataIO.save_json("data/red/cogs.json", registry)
+    dataIO.save_json("data/cadence/cogs.json", registry)
 
     if failed:
         print("\nFailed to load: {}\n".format(" ".join(failed)))

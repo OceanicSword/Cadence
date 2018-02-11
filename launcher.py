@@ -26,7 +26,7 @@ REQS_NO_AUDIO_TXT = "requirements_no_audio.txt"
 FFMPEG_BUILDS_URL = "https://ffmpeg.zeranoe.com/builds/"
 
 INTRO = ("==========================\n"
-         "Red Discord Bot - Launcher\n"
+         "Cadence Discord Bot - Launcher\n"
          "==========================\n")
 
 IS_WINDOWS = os.name == "nt"
@@ -450,8 +450,8 @@ def create_fast_start_scripts():
         return
 
     call = "\"{}\" launcher.py".format(interpreter)
-    start_red = "{} --start".format(call)
-    start_red_autorestart = "{} --start --auto-restart".format(call)
+    start_cadence = "{} --start".format(call)
+    start_cadence_autorestart = "{} --start --auto-restart".format(call)
     modified = False
 
     if IS_WINDOWS:
@@ -466,12 +466,12 @@ def create_fast_start_scripts():
         else:
             ext = ".command"
 
-    start_red             = ccd + start_red             + pause
-    start_red_autorestart = ccd + start_red_autorestart + pause
+    start_cadence             = ccd + start_cadence             + pause
+    start_cadence_autorestart = ccd + start_cadence_autorestart + pause
 
     files = {
-        "start_red"             + ext : start_red,
-        "start_red_autorestart" + ext : start_red_autorestart
+        "start_cadence"             + ext : start_cadence,
+        "start_cadence_autorestart" + ext : start_cadence_autorestart
     }
 
     if not IS_WINDOWS:
@@ -495,7 +495,7 @@ def main():
     has_git = is_git_installed()
     is_git_installation = os.path.isdir(".git")
     if IS_WINDOWS:
-        os.system("TITLE Red Discord Bot - Launcher")
+        os.system("TITLE Cadence Discord Bot - Launcher")
     clear_screen()
 
     try:
@@ -507,20 +507,19 @@ def main():
         print(INTRO)
 
         if not is_git_installation:
-            print("WARNING: It doesn't look like Red has been "
+            print("WARNING: It doesn't look like Cadence has been "
                   "installed with git.\nThis means that you won't "
                   "be able to update and some features won't be working.\n"
                   "A reinstallation is recommended. Follow the guide "
-                  "properly this time:\n"
-                  "https://twentysix26.github.io/Red-Docs/\n")
+                  "properly this time:\n")
 
         if not has_git:
             print("WARNING: Git not found. This means that it's either not "
                   "installed or not in the PATH environment variable like "
                   "requested in the guide.\n")
 
-        print("1. Run Red /w autorestart in case of issues")
-        print("2. Run Red")
+        print("1. Run Cadence /w autorestart in case of issues")
+        print("2. Run Cadence")
         print("3. Update")
         print("4. Install requirements")
         print("5. Maintenance (repair, reset...)")
@@ -548,13 +547,13 @@ if __name__ == '__main__':
     # Sets current directory to the script's
     os.chdir(dirname)
     if not PYTHON_OK:
-        print("Red needs Python 3.5 or superior. Install the required "
+        print("Cadence needs Python 3.5 or superior. Install the required "
               "version.\nPress enter to continue.")
         if INTERACTIVE_MODE:
             wait()
         exit(1)
     if pip is None:
-        print("Red cannot work without the pip module. Please make sure to "
+        print("Cadence cannot work without the pip module. Please make sure to "
               "install Python without unchecking any option during the setup")
         wait()
         exit(1)
