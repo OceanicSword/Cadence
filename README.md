@@ -1,4 +1,4 @@
 # Cadence - A Discord Music Bot
 
-* Music features (YouTube, SoundCloud, local files, playlists, queues)
+* Music features (YouTube, SoundCloud, playlists, etc)
 * Custom commands
