@@ -486,7 +486,7 @@ class Owner:
             async with self.session.get(url) as r:
                 data = await r.read()
             await self.bot.edit_profile(self.bot.settings.password, avatar=data)
-            await self.bot.say("Done.")
+            await self.bot.say("Done")
             log.debug("changed avatar")
         except Exception as e:
             await self.bot.say("Error, check your console or logs for "
